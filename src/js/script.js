@@ -189,7 +189,7 @@
               visibleImages.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
-          /* END LOOP: for each optionId in param.options */
+          /* END LOOP: for each optionId in param.options add before here */
         }
         /* END LOOP: for each paramId in thisProduct.data.params */
         /* set the contents of thisProduct.priceElem to be the value of variable price */
