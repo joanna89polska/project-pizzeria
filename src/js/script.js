@@ -172,30 +172,30 @@
             console.log('price reduced: ', option.price);
           }
           /* END ELSE IF: if option is not selected and option is default */
-        }
-        /**[NEW] finding all images with class active */
-        const visibleImages = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
-        /**[NEW] START IF ELSE: if option is selected then add active 'class classNames.MenuProduct.imageVisible' */
-        if (optionSelected && visibleImages) {
-          visibleImages.classList.add(classNames.menuProduct.imageVisible);
-          if (!thisProduct.params[paramId]) {
-            thisProduct.params[paramId] = {
-              label: param.label,
-              options: {},
-            };
+          /**[NEW] finding all images with class active */
+          const visibleImages = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          /**[NEW] START IF ELSE: if option is selected then add active 'class classNames.MenuProduct.imageVisible' */
+          if (optionSelected && visibleImages) {
+            visibleImages.classList.add(classNames.menuProduct.imageVisible);
+            if (!thisProduct.params[paramId]) {
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {},
+              };
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
+          } else {
+            if (visibleImages) {
+              visibleImages.classList.remove(classNames.menuProduct.imageVisible);
+            }
           }
-          thisProduct.params[paramId].options[optionId] = option.label;
-        } else {
-          if (visibleImages) {
-            visibleImages.classList.remove(classNames.menuProduct.imageVisible);
-          }
+          /* END LOOP: for each optionId in param.options */
         }
-        /* END LOOP: for each optionId in param.options */
+        /* END LOOP: for each paramId in thisProduct.data.params */
+        /* set the contents of thisProduct.priceElem to be the value of variable price */
+        thisProduct.priceElem.innerHTML = price;
       }
-      /* END LOOP: for each paramId in thisProduct.data.params */
     }
-    /* set the contents of thisProduct.priceElem to be the value of variable price */
-    thisProduct.priceElem.innerHTML = price;
   }
 
   const app = {
