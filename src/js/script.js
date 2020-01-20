@@ -223,7 +223,7 @@
       console.log('constructor argument:', element);
     }
 
-    getElements() {
+    getElements(element) {
       const thisWidget = this;
 
       thisWidget.element = element;
