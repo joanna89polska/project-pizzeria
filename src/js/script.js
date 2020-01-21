@@ -102,7 +102,7 @@
         /* toggle active class on element of thisProduct */
         clickableTrigger.classList.toggle('active');
         /* find all active products */
-        const activeProducts = document.querySelectorAll('.active');
+        const activeProducts = document.querySelectorAll('.product');
         //console.log(activeProducts);
         /* START LOOP: for each active product */
         for (let activeProduct of activeProducts) {
@@ -174,10 +174,9 @@
           }
           /* END ELSE IF: if option is not selected and option is default */
           /**[NEW] finding all images with class active */
-          const visibleImages = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          const visibleImages = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
           /**[NEW] START IF ELSE: if option is selected then add active 'class classNames.MenuProduct.imageVisible' */
           if (optionSelected && visibleImages) {
-            visibleImages.classList.add(classNames.menuProduct.imageVisible);
             if (!thisProduct.params[paramId]) {
               thisProduct.params[paramId] = {
                 label: param.label,
@@ -185,9 +184,12 @@
               };
             }
             thisProduct.params[paramId].options[optionId] = option.label;
+            for (let image of visibleImages) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            }
           } else {
-            if (visibleImages) {
-              visibleImages.classList.remove(classNames.menuProduct.imageVisible);
+            for (let image of visibleImages) {
+              image.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
           /* END LOOP: for each optionId in param.options add before here */
@@ -206,7 +208,7 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', function() {
+      thisProduct.amountWidgetElem.addEventListener('updated', function () {
         thisProduct.processOrder();
       });
     }
@@ -241,32 +243,32 @@
       if (thisWidget.value !== newValue && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMin) {
         thisWidget.value = newValue;
         thisWidget.announce();
-      } 
+      }
 
       thisWidget.input.value = thisWidget.value;
     }
 
-    initActions(){
+    initActions() {
       const thisWidget = this;
-  
-      thisWidget.dom.input.addEventListener('change', function(){
+
+      thisWidget.dom.input.addEventListener('change', function () {
         thisWidget.setValue(thisWidget.dom.input.value);
       });
-      thisWidget.dom.linkDecrease.addEventListener('click', function(){
+      thisWidget.dom.linkDecrease.addEventListener('click', function () {
         event.preventDefault();
         thisWidget.setValue(thisWidget.value - 1);
       });
-      thisWidget.dom.linkIncrease.addEventListener('click', function(){
+      thisWidget.dom.linkIncrease.addEventListener('click', function () {
         event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1);
       });
     }
 
-    announce(){
+    announce() {
       const thisWidget = this;
 
       const event = new Event('updated');
-          
+
       thisWidget.element.dispatchEvent(event);
     }
 
