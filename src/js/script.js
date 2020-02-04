@@ -266,6 +266,7 @@
       const thisWidget = this;
 
       thisWidget.getElements(element);
+      thisWidget.initActions();
       thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
       console.log('AmoundWidget: ', thisWidget);
@@ -287,7 +288,7 @@
 
       /* TODO: Add validation */
 
-      if (thisWidget.value !== newValue && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMin) {
+      if (thisWidget.value !== newValue && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
         thisWidget.value = newValue;
         thisWidget.announce();
       }
@@ -298,15 +299,17 @@
     initActions() {
       const thisWidget = this;
 
-      thisWidget.dom.input.addEventListener('change', function () {
-        thisWidget.setValue(thisWidget.dom.input.value);
-      });
-      thisWidget.dom.linkDecrease.addEventListener('click', function () {
+      thisWidget.input.addEventListener('change', function () {
+        thisWidget.setValue(thisWidget.input.value);
+      })
+      ;
+      thisWidget.linkDecrease.addEventListener('click', function () {
         event.preventDefault();
         thisWidget.setValue(thisWidget.value - 1);
       });
-      thisWidget.dom.linkIncrease.addEventListener('click', function () {
+      thisWidget.linkIncrease.addEventListener('click', function () {
         event.preventDefault();
+        //console.log('clicked', thisWidget.value);
         thisWidget.setValue(thisWidget.value + 1);
       });
     }
@@ -465,14 +468,13 @@
       const thisCartProduct = this;
 
       thisCartProduct.id = menuProduct.id;
-      thisCartProduct.name = menuProduct, name;
+      thisCartProduct.name = menuProduct.name;
       thisCartProduct.price = menuProduct.price;
       thisCartProduct.priceSingle = menuProduct.priceSingle;
       thisCartProduct.amount = menuProduct.amount;
       thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
 
       thisCartProduct.getElements(element);
-
       thisCartProduct.initAmountWidget();
       thisCartProduct.initActions();
 
