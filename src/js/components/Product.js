@@ -168,6 +168,8 @@ class Product {
     thisProduct.amountWidgetElem.addEventListener('updated', function () {
       thisProduct.processOrder();
     });
+
+    thisProduct.amountWidget.setValue(1); // connected with BaseWidget setValue
   }
 
   addToCart() {
