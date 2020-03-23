@@ -1,0 +1,231 @@
+.home-wrapper-container {
+  margin: 0 auto;
+  margin-top: 36px;
+  border-radius: 5px;
+  width: 700px;
+  background: white;
+  font-family: $font-text;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-header;
+  margin-bottom: 50px;
+
+  .home-navigation {
+    width: 605px;
+    background: white;
+    text-align: center;
+    margin-left: 49px;
+    margin-top: 70px;
+    color: #FFFFF2;
+
+    .order {
+      width: 300px;
+      height: 120px;
+      background-image: url("../images/pizza-1.jpg");
+      background-size: cover;
+      float: left;
+      margin-top: 5px;
+      border-radius: 3px;
+      color: #FFFFF2;
+      border-radius: 3px;
+
+      .text-display {
+        display: none;
+      }
+
+      h2 {
+        padding-top: 20px;
+        font-size: x-large;
+      }
+    }
+
+    .order:hover {
+      cursor: pointer;
+
+      h2 {
+        padding-top: 0;
+        transition: 0.5s;
+      }
+
+      p {
+        display: block;
+        color: white;
+        transition: 0.5s;
+      }
+    }
+
+    .booking {
+      width: 300px;
+      height: 120px;
+      background-image: url("../images/pizza-2.jpg");
+      background-size: cover;
+      float: left;
+      margin-top: 5px;
+      border-radius: 3px;
+      margin-left: 4px;
+      color: #FFFFF2;
+      border-radius: 3px;
+
+      .text-display {
+        display: none;
+      }
+
+      h2 {
+        padding-top: 20px;
+        font-size: x-large;
+      }
+    }
+
+    .booking:hover {
+      cursor: pointer;
+
+      h2 {
+        padding-top: 0;
+        transition: 0.5s;
+      }
+
+      p {
+        display: block;
+        color: white;
+        transition: 0.5s;
+      }
+    }
+
+    .opening-hours {
+      width: 100%;
+      height: 120px;
+      float: left;
+      border-radius: 3px;
+      margin-top: 6px;
+      color: $color-dark;
+      background-color: $color-main;
+      
+      h2 {
+        padding-top: 15px;
+        font-size: x-large;
+        color: white;
+      }
+
+      p {
+        margin-top: 10px;
+        font-family: $font-text;
+      }
+    }
+
+    .opening-hours:hover {
+      background-color: lighten(#C04E44, 3%);
+    }
+  }
+
+  .comments-wrapper{
+    margin: 50px 5px;
+  }
+  
+  .carousel{
+    min-height: 300px;
+  }
+  
+  .item{
+    height: 80%;
+    
+    &-content{
+      position: relative;
+      height: 200px;
+  
+      &-image{
+        position: absolute;
+        width: 35%;
+        height: 100%;
+        overflow: hidden;
+      }
+  
+      &-description{
+        padding: 0 0 0 40%;
+      }
+    }
+  
+    img{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  .carousel .carousel-indicators li {
+    border-color: rgb(161, 161, 161);
+    background: rgb(161, 161, 161);
+  }
+  
+  .carousel .carousel-indicators li.active {
+    border-color: rgba(0, 0, 0, 1);
+    background: rgba(0, 0, 0, 1);
+  }  
+  
+  .home-gallery {
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    .image {
+      flex: 0 0 30%;
+      margin: 5px;
+      height: 200px;
+      width: 200px;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 3px;
+        margin-top: 50px;
+      }
+    }
+
+    .icon {
+      transform: translate(0%, -103%);
+      background: rgba(0, 0, 0, .4);
+      opacity: 0;
+      transition: .4s;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    i {
+      margin: 5px;
+      color: white;
+      font-size: 20px;
+    }
+
+    .image:hover .icon {
+      opacity: 1;
+    }
+
+    .image i:hover {
+      color: $color-main;
+      cursor: pointer;
+    }
+
+    .image .fa-share-alt:hover {
+      color: #DCDAC4;
+    }
+  }
+
+  .social-media {
+    padding-bottom: 40px;
+    margin-top: 60px;
+    margin-left: 50px;
+    color: $color-main;
+  }
+
+  .social-media:hover {
+    color: lighten(#C04E44, 3%);
+  }
+}

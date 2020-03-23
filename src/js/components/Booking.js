@@ -123,7 +123,7 @@ export class Booking {
       //console.log('loop', hourBlock);
 
       if (typeof thisBooking.booked[date][hourBlock] == 'undefined') {
-        thisBooking.booked[date] = [];
+        thisBooking.booked[date][hourBlock] = [];
       }
 
       //thisBooking.booked[date][hour].push(table);
